@@ -7,7 +7,7 @@ Steps:
   2) Rename output_file's extension from output.hocr to Sample.xml
   3) Rename input image to Sample.jpg/png/tif... 
   3) Place Sample.xml and Sample.jpg/png/tif image in same directory as *segmentation.py*
-  4) Run *segmentation.py* [python segmentation.py
+  4) Run *segmentation.py* [python segmentation.py]
   
   
   
