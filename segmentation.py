@@ -14,7 +14,7 @@ def crop(image_path, coords, saved_location):
 
 def createFolder(directory):
     """
-    @param directory: path of directory to be created
+    @param directory: name of directory to be created
     """
     try:
         if not os.path.exists(directory):
@@ -22,9 +22,13 @@ def createFolder(directory):
     except OSError:
         print('Error: Creating directory. ' + directory)
 
-def segment(sample_file_name,xml_file_name):
-    sample_file_name_no_extension = sample_file_name.split(".")[0]
-    createFolder(sample_file_name_no_extension)
+def segment(input_file_name,xml_file_name):
+    """
+    @param input_file_name: name of input image
+    @param xml_file_name: name of input xml file
+    """
+    file_name_no_extension = input_file_name.split(".")[0]
+    createFolder(file_name_no_extension)
     tree = ET.parse(xml_file_name)
     root = tree.getroot()
 
@@ -42,7 +46,7 @@ def segment(sample_file_name,xml_file_name):
             y2 = int(semicolon.split(" ")[4])
 
             segment_file_name = "line_1_" + str(count) + ".jpg"
-            path_to_new_folder = sample_file_name_no_extension + "/" + segment_file_name
+            path_to_new_folder = file_name_no_extension + "/" + segment_file_name
 
             width = int(x2-x1)
             height = int(y2-y1)
@@ -50,10 +54,12 @@ def segment(sample_file_name,xml_file_name):
 
             # Image Coordinates Out of Bounds Handler
             if(x1!=0): #and (width>height) and (height<100) and (prop>10)):
-                crop(sample_file_name, (x1, y1, x2, y2), path_to_new_folder)
+                crop(input_file_name, (x1, y1, x2, y2), path_to_new_folder)
 
             count = count + 1
 
+def main():
+    segment("Sample.tif","Sample.xml")
 
-segment("Sample.tif","Sample.xml")
-
+if __name__ == '__main__':
+    main()
