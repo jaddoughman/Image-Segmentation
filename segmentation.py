@@ -23,10 +23,11 @@ def createFolder(directory):
     except OSError:
         print('Error: Creating directory. ' + directory)
 
-def segment(input_file_name,xml_file_name):
+def segment(input_file_name,xml_file_name,crop_level):
     """
     @param input_file_name: name of input image
     @param xml_file_name: name of input xml file
+    @param crop_level: level of cropping (area/paragraph/line/word)
     """
     createFolder("Output")
     tree = ET.parse(xml_file_name)
@@ -35,7 +36,7 @@ def segment(input_file_name,xml_file_name):
     count = 1
     # Parsing HOCR file to get bounding box coordinates
     for span in root.iter('{http://www.w3.org/1999/xhtml}span'):
-        if(span.get('class')==('ocr_line')):
+        if(span.get('class')==(crop_level)):
             s = span.get('title')
 
             # Splitting bounding box string into coordinates
@@ -62,9 +63,10 @@ def main():
     parser = argparse.ArgumentParser(description='Image and HOCR file')
     parser.add_argument('image', type=str, help='Input image file')
     parser.add_argument('hocr', type=str, help='Input HOCR file')
+    parser.add_argument('level', type=str, help='Area/paragraph/line/word level')
     args = parser.parse_args()
     
-    segment(args.image,args.hocr)
+    segment(args.image,args.hocr,args.level)
     
 if __name__ == '__main__':
     main()
