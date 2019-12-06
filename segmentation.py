@@ -27,7 +27,6 @@ def segment(input_file_name,xml_file_name):
     @param input_file_name: name of input image
     @param xml_file_name: name of input xml file
     """
-
     createFolder("Output")
     tree = ET.parse(xml_file_name)
     root = tree.getroot()
@@ -46,7 +45,7 @@ def segment(input_file_name,xml_file_name):
             y2 = int(semicolon.split(" ")[4])
 
             segment_file_name = "line_1_" + str(count) + ".jpg"
-            path_to_new_folder = file_name_no_extension + "/" + segment_file_name
+            path_to_new_folder = "Output/" + segment_file_name
 
             width = int(x2-x1)
             height = int(y2-y1)
