@@ -35,7 +35,15 @@ def segment(input_file_name,xml_file_name,crop_level):
 
     count = 1
     # Parsing HOCR file to get bounding box coordinates
-    for span in root.iter('{http://www.w3.org/1999/xhtml}span'):
+    if crop_level=="ocr_par":
+        tag = 'p'
+    elif crop_level=="ocr_line" or crop_level=="ocrx_word":
+        tag = 'span'
+    elif crop_level=="ocr_carea":
+        tag = 'div'
+  
+    rootiter = "{http://www.w3.org/1999/xhtml}" + tag
+    for span in root.iter(rootiter):
         if(span.get('class')==(crop_level)):
             s = span.get('title')
 
