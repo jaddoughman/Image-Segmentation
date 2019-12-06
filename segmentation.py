@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import argparse
 import os
 from PIL import Image
 
@@ -58,7 +59,12 @@ def segment(input_file_name,xml_file_name):
             count = count + 1
 
 def main():
-    segment("Sample.tif","Sample.xml")
-
+    parser = argparse.ArgumentParser(description='Image and HOCR file')
+    parser.add_argument('image', type=str, help='Input image file')
+    parser.add_argument('hocr', type=str, help='Input HOCR file')
+    args = parser.parse_args()
+    
+    segment(args.image,args.hocr)
+    
 if __name__ == '__main__':
     main()
