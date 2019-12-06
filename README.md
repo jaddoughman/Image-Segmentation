@@ -1,6 +1,6 @@
 # Image Segmentation
 
-Segmentation algorithm that uses an Optical Character Recognition (OCR) engine to segment images to area/paragraph/line/word levels. Initially, the image needs to be passed through Tesseract 4.0, Google's open-source OCR engine, to generate an *hocr* file containing the bounding box coordinates of every area, paragraph, line, and word in the image. The image file and the hocr file are then passed to *segmentation.py* , which parses the XHTML file and saves the every cropped image in the *Output* directory. 
+Segmentation algorithm that uses an Optical Character Recognition (OCR) engine to segment images to area/paragraph/line/word levels. Initially, the image needs to be passed through Tesseract 4.0, Google's open-source OCR engine, to generate an *hocr* file containing the bounding box coordinates of every area, paragraph, line, and word in the image. The image file and the hocr file are then passed to *segmentation.py* , which parses the XHTML file and saves the every cropped image to the *Output* directory. 
 
 ### Prerequisites
 
