@@ -27,8 +27,8 @@ def segment(input_file_name,xml_file_name):
     @param input_file_name: name of input image
     @param xml_file_name: name of input xml file
     """
-    file_name_no_extension = input_file_name.split(".")[0]
-    createFolder(file_name_no_extension)
+
+    createFolder("Output")
     tree = ET.parse(xml_file_name)
     root = tree.getroot()
 
