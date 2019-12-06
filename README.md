@@ -29,8 +29,24 @@ tesseract Sample.tif Sample hocr
 
 The next step is to feed the image and its respective XHTML file to *segmentation.py* script, which will parse the the XHTML file and saving the cropped regions to the "Output" directory.
 
+**Segmenting Image to Area Level
+```
+python3 segmentation.py Sample.tif Sample.hocr ocr_carea
+```
+
+**Segmenting Image to Paragraph Level
+```
+python3 segmentation.py Sample.tif Sample.hocr ocr_par
+```
+
+**Segmenting Image to Line Level
 ```
 python3 segmentation.py Sample.tif Sample.hocr ocr_line
 ```
 
-Now, a new folder called "Output" has been created containing the cropped text-line images named "line_[line number].jpg"
+**Segmenting Image to Word Level
+```
+python3 segmentation.py Sample.tif Sample.hocr ocrx_word
+```
+
+Now, a new folder called "Output" has been created containing the cropped images.
