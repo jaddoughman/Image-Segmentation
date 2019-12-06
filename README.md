@@ -19,7 +19,7 @@ Supported Compilers are:
 Other compilers might work, but are not officially supported.
 
 
-### Running Code
+### Generating HOCR file
 
 Change directory to the folder containing the image to be segmented. The goal now is to use Tesseract 4.0 to generate an XHTML version of the image, which contains the bounding box coordinates of every text line involved.
 
@@ -27,7 +27,9 @@ Change directory to the folder containing the image to be segmented. The goal no
 tesseract Sample.tif Sample hocr
 ```
 
-The next step is to feed the image and its respective XHTML file to *segmentation.py* script, which will parse the the XHTML file and saving the cropped regions to the "Output" directory.
+### Segmenting Image To Area/Paragraph/Line/Text Level
+
+The next step is to feed the image and its respective XHTML file to *segmentation.py* script, which will parse the the XHTML file and saving the cropped regions to the *Output* directory.
 
 **Segmenting Image to Area Level**
 ```
@@ -49,4 +51,4 @@ python3 segmentation.py Sample.tif Sample.hocr ocr_line
 python3 segmentation.py Sample.tif Sample.hocr ocrx_word
 ```
 
-Now, a new folder called "Output" has been created containing the cropped images.
+Now, a new folder called *Output* has been created containing the cropped images.
