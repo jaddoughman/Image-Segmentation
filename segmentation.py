@@ -46,7 +46,7 @@ def segment(input_file_name,xml_file_name,crop_level):
             x2 = int(semicolon.split(" ")[3])
             y2 = int(semicolon.split(" ")[4])
 
-            segment_file_name = "line_1_" + str(count) + ".jpg"
+            segment_file_name = crop_level + "_" + str(count) + ".jpg"
             path_to_new_folder = "Output/" + segment_file_name
 
             width = int(x2-x1)
